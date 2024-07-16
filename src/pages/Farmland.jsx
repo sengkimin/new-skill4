@@ -1,7 +1,8 @@
+
 function Farmland() {
   return (
     <>
-      <h1>Hi Farmlands</h1>
+    
     </>
   );
 }
