@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import {
   getTotalFarmers,
@@ -21,26 +22,37 @@ const Dashboard = () => {
   }, []);
 
   return (
+    
+    
     <>
+
       <div className="dashboard-container">
+      
         <h2>Overview</h2>
+
         <div className="dashboard-stats">
+          <main>
           <div className="dashboard-stat">
             <h3>Total Farmers</h3>
             <p>{totalFarmers}</p>
           </div>
           <div className="dashboard-stat">
-            <h3>Total Farmers</h3>
+            <h3>Total Farmland</h3>
+            <p>{totalFarmers}</p>
+          </div>
+     
+          </main>
+          <span>
+          <div className="dashboard-stat">
+            <h3>Total Crop cycle</h3>
             <p>{totalFarmers}</p>
           </div>
           <div className="dashboard-stat">
-            <h3>Total Farmers</h3>
+            <h3>Total Account</h3>
             <p>{totalFarmers}</p>
           </div>
-          <div className="dashboard-stat">
-            <h3>Total Farmers</h3>
-            <p>{totalFarmers}</p>
-          </div>
+          </span>
+       
         </div>
       </div>
     </>
