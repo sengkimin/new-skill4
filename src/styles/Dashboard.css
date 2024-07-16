@@ -68,3 +68,13 @@ span{
   margin: 1rem 0 0;
   color: #333;
 }
+tr,th,td{
+  border: 1px solid #009A2B;
+  width: 30px;
+  height: 40px;
+}
+table{
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+}
