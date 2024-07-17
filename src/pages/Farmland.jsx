@@ -3,7 +3,7 @@ function Farmland() {
   return (
     <>
 
-      <h1>Hi Farmlands</h1>
+
       <div className="table">
       <table>
   <tr>

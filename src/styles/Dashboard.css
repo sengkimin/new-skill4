@@ -10,6 +10,7 @@
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   font-family: "Inter", sans-serif;
+
 }
 
 .dashboard-header {
@@ -32,11 +33,13 @@ main {
   display: flex;
   justify-content: center;
   margin-top: 20px;
+
 }
 
 span {
   display: flex;
   justify-content: center;
+  margin-top: -54px;
 }
 
 .dashboard-stat {
@@ -48,6 +51,7 @@ span {
   border: 2px solid #4CAF50;
   width: 500px;
   margin-left: 10px;
+  background-color: #ebf0ebcf;
 }
 
 .dashboard-stat h3 {
