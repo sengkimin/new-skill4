@@ -1,8 +1,8 @@
 function Cropcycle() {
     return (
       <>
-        <h1>Hi Crop Cycle</h1>
-        <h1>hi bro</h1>
+        <h1>Krob bek in WMAD is Sopheak.l</h1>
+        <h1>Chkea pheak</h1>
       </>
     );
   }

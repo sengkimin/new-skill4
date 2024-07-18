@@ -1,0 +1,10 @@
+.drop_Downprovice{
+    background-color: blue;
+    width: 100%;
+}
+select{
+    background-color: #009A2B;
+    padding: 15px 15px;
+    border: none;
+    color: white;
+}

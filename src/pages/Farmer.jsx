@@ -1,12 +1,12 @@
 import React from 'react';
 import './../styles/Farmer.css';
-
+import DropdownList from '../components/DropDownProvice';
 function Farmers() {
   return (
     <>
   
    
-    
+    <DropdownList></DropdownList>
         <table>
           <thead>
             <tr>
