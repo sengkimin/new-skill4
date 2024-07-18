@@ -1,65 +1,65 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './../styles/Farmer.css';
+import API_BASE_URL from '../config';
 
 function Farmers() {
-  return (
-    <>
-  
-   
-    
-        <table>
-          <thead>
-            <tr>
-              <th>No</th>
-              <th>IDCard</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Gender</th>
-              <th>Phone</th>
-              <th>Source</th>
-              <th>Province</th>
-              <th>Active</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>F123456</td>
-              <td>John</td>
-              <td>Doe</td>
-              <td>Male</td>
-              <td>+855 12 345 678</td>
-              <td>Amru Rice</td>
-              <td>Kampot</td>
-              <td>Edit</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>F123456</td>
-              <td>John</td>
-              <td>Doe</td>
-              <td>Female</td>
-              <td>+855 12 345 678</td>
-              <td>N/A</td>
-              <td>Kampong Thom</td>
-              <td>Edit</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>F123456</td>
-              <td>John</td>
-              <td>Doe</td>
-              <td>Male</td>
-              <td>+855 12 345 678</td>
-              <td>N/A</td>
-              <td>Kampong Cham</td>
-              <td>Edit</td>
-            </tr>
-          </tbody>
-        </table>
-        </>
+  const [farmers, setFarmers] = useState([]);
+  useEffect(()=>{
+    const fetchFarmers=async()=>{
+      try{
+      const response = await fetch(`${API_BASE_URL}/farmers`);
+      const data = await response.json();
+      setFarmers(data);
+      return response.data
+    }catch(error){
+      console.log(error);
+    }
       
-)
-}
+      }
+      fetchFarmers();
+      },[])
+
+
+
+
+
+  return (
+
+    <>
+      <table>
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>IDCard</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Gender</th>
+            <th>Phone</th>
+            <th>Source</th>
+            <th>Province</th>
+            <th>Active</th>
+          </tr>
+        </thead>
+        <tbody>
+          {farmers.map((farmer, index) => (
+            <tr key={farmer.id}>
+              <td>{index + 1}</td>
+              <td>{farmer.id_card}</td>
+              <td>{farmer.first_name}</td>
+              <td>{farmer.last_name}</td>
+              <td>{farmer.gender}</td>
+              <td>{farmer.phone}</td>
+              <td>{farmer.source}</td>
+              <td>{farmer.district_id}</td>
+              <td>Edit</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
+  );
+  };
+
+
 
 export default Farmers;

@@ -1,56 +1,60 @@
+import React, { useState, useEffect } from 'react';
+import API_BASE_URL from '../config';
+
+function useFarmlands() {
+  const [farmlands, setFarmlands] = useState([]);
+
+  useEffect(() => {
+    const fetchFarmlands = async () => {
+      try {
+        const response = await fetch(`${API_BASE_URL}/farmlands`);
+        const data = await response.json();
+        setFarmlands(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchFarmlands();
+  }, []);
+
+  return farmlands;
+}
 
 function Farmland() {
+  const farmlands = useFarmlands();
+
   return (
-    <>
-
-
-      <div className="table">
+    <div className="table">
       <table>
-  <tr>
-    <th>No</th>
-    <th>IDCard</th>
-    <th>Province</th>
-    <th>Latitude</th>
-    <th>Longitude</th>
-    <th>Faemer(owner)</th>
-    <th>Status</th>
-    <th>Active</th>
-
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>1000</td>
-    <td>Kampot</td>
-    <td>12.345</td>
-    <td>98.766</td>
-    <td>John</td>
-    <td>active</td>
-    <td>Edit</td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>1100</td>
-    <td>Kampong Thom</td>
-    <td>12.345</td>
-    <td>98.766</td>
-    <td>John</td>
-    <td>active</td>
-    <td>Edit</td>
-  </tr>
-  <tr>
-    <td>3</td>
-    <td>1200</td>
-    <td>Kampot</td>
-    <td>12.345</td>
-    <td>98.766</td>
-    <td>John</td>
-    <td>inactive</td>
-    <td>Edit</td>
-  </tr>
-</table>
-</div>
-
-    </>
+        <thead>
+          <tr>
+            {/* <th>No</th> */}
+            <th>ID</th>
+            <th>Size</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Farmer (owner)</th>
+            <th>Status</th>
+            <th>Active</th>
+          </tr>
+        </thead>
+        <tbody>
+          {farmlands.map((farmland, index) => (
+            <tr key={farmland.id}>
+              {/* <td>{index + 1}</td> */}
+              <td>{farmland.id}</td>
+              <td>{farmland.size}</td>
+              <td>{farmland.latitude}</td>
+              <td>{farmland.longitude}</td>
+              <td>{farmland.farmer_id}</td> 
+              <td>{farmland.status}</td>
+              <td>Edit</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
 

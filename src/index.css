@@ -81,7 +81,7 @@ button:active {
 #sidebar > * {
   padding-left: 2rem;
   padding-right: 2rem;
-  margin-top: 70px;
+  margin-top: 50px;
   
 
 
@@ -305,7 +305,7 @@ i {
 .contai{
   width: 95%;
   height: auto;
-  overflow: hidden;
+
   margin-left: 50px;
 
 }
@@ -333,7 +333,7 @@ i {
   height: 40px;
   border-radius: 50%;
 }
-.mian{
+.mians{
   display: flex;
 
 }
