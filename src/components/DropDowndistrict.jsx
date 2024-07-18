@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { getprovinces } from "../api/province";
+import { getdistrict } from "../api/district";
 
-const DropdownList = () => {
-  const [provinces, setprovinces] = useState([]);
+const Dropdowndistrict = () => {
+  const [districts, setdistricts] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const provincesData = await getprovinces();
-        console.log("Data provinces: ", {
-          provincesData,
+        const districtData = await getdistrict();
+        console.log("Data district: ", {
+          districtData,
         });
 
-        setprovinces(provincesData);
+        setdistricts(districtData);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -26,8 +26,8 @@ const DropdownList = () => {
       <div className="select">
         <select>
           <option>All</option>
-          {provinces.map((province) => (
-            <option key={province.id}>{province.name}</option>
+          {districts.map((district) => (
+            <option key={district.id}>{district.name}</option>
           ))}
         </select>
       </div>
@@ -36,4 +36,4 @@ const DropdownList = () => {
   );
 };
 
-export default DropdownList;
+export default Dropdowndistrict;
