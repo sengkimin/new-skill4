@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './../styles/Farmer.css';
 import API_BASE_URL from '../config';
+import DropdownList from '../components/DropDownProvice';
+import Dropdowndistrict from '../components/DropDowndistrict';
 
 function Farmers() {
   const [farmers, setFarmers] = useState([]);
@@ -24,8 +26,13 @@ function Farmers() {
 
 
   return (
-
+    
     <>
+    <div className='box-dropdown'>
+    <DropdownList></DropdownList>
+    <Dropdowndistrict></Dropdowndistrict>
+    </div>
+
       <table>
         <thead>
           <tr>
