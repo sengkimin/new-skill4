@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import API_BASE_URL from '../config';
+import DropDownactive from '../components/DropDownactive';
 
 function useFarmlands() {
   const [farmlands, setFarmlands] = useState([]);
@@ -25,7 +26,11 @@ function Farmland() {
   const farmlands = useFarmlands();
 
   return (
-    <div className="table">
+<>
+   <div className="dropactive">
+ <DropDownactive/>
+   </div>
+ 
       <table>
         <thead>
           <tr>
@@ -54,7 +59,8 @@ function Farmland() {
           ))}
         </tbody>
       </table>
-    </div>
+      </>
+
   );
 }
 

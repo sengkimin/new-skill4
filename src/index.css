@@ -74,6 +74,10 @@ button:active {
   flex-direction: column;
   margin-top: 30px;
   border-radius: 10px;
+  position: sticky;
+  top: 6rem;
+  z-index: 2;
+  cursor: pointer;
 
 
 }
@@ -81,7 +85,7 @@ button:active {
 #sidebar > * {
   padding-left: 2rem;
   padding-right: 2rem;
-  margin-top: 50px;
+
   
 
 
@@ -134,13 +138,17 @@ i {
   padding: 0;
   margin: 0;
   list-style: none;
+  position: sticky;
+  top: 4rem;
+  z-index: 2;
   
 }
 
 #sidebar li {
   margin: 0.25rem 0;
-  border: solid 1px #05bd39;
+  border: solid 1px #0c792b;
   border-radius: 5px;
+
 
 }
 
@@ -164,14 +172,14 @@ i {
 }
 
 #sidebar nav a.active {
-  background: #91efab;
+  background: #47c16a;
   color: white;
 
 
 }
 
 #sidebar nav a.pending {
-  color:#05ea46;
+  color:#47c16a;
 }
 
 #detail {
@@ -314,18 +322,22 @@ i {
   justify-content: space-between;
   align-items: center;
   padding: 8px 20px;
-  background-color: #fff;
+  background-color: #ddf1e2;
   border-bottom: 1px solid #ccc;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  border: 1px solid black;
+  border: 1px solid rgb(5, 84, 33);
   width: 100%;
   margin: 0 auto;
-  border-radius: 15px;
+  border-radius: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 2;
 }
 
 .title {
-  font-size: 24px;
-  color: #4CAF50;
+  font-size: 25px;
+  color: #3b8d3e;
+  font-weight: 400;
 }
 
 .profile-icon img {

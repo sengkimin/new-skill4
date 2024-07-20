@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import API_BASE_URL from '../config';
+import DropDownactive from '../components/DropDownactive';
 
 function usecropcyles() {
   const [cropcyles, setFarmlands] = useState([]);
@@ -25,7 +26,12 @@ function cropcyle() {
   const cropcyles = usecropcyles();
 
   return (
-    <div className="table">
+  
+ 
+      <>
+      <div className='dropactive'>
+        <DropDownactive/>
+      </div>
       <table>
         <thead>
           <tr>
@@ -52,7 +58,9 @@ function cropcyle() {
           ))}
         </tbody>
       </table>
-    </div>
+
+    </>
+
   );
 }
 
