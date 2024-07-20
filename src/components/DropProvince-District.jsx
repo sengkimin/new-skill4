@@ -32,14 +32,14 @@ const Dropdown = () => {
     <div className="App">
       <div className="box-dropdown">
         <select onChange={handleChange} value={selectedProvince}>
-          <option value="">All Provinces</option>
+          <option value="">All</option>
           {provinces.map((province) => (
             <option key={province.id} value={province.id}>{province.name}</option>
           ))}
         </select>
         
         <select>
-          <option value="">All Districts</option>
+          <option value="">All</option>
           {districts.map((district) => (
             <option key={district.id} value={district.id}>{district.name}</option>
           ))}

@@ -1,36 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import API_BASE_URL from '../config';
-import DropDownactive from '../components/DropDownactive';
+import DropDownactive from '../components/DropDownactiveCrop';
 
-function usecropcyles() {
-  const [cropcyles, setFarmlands] = useState([]);
+function useCropCycles() {
+  const [cropCycles, setCropCycles] = useState([]);
 
   useEffect(() => {
-    const fetchcropcyles = async () => {
+    const fetchCropCycles = async () => {
       try {
         const response = await fetch(`${API_BASE_URL}/crop-cycles`);
         const data = await response.json();
-        setFarmlands(data);
+        setCropCycles(data);
       } catch (error) {
         console.log(error);
       }
     };
 
-    fetchcropcyles();
+    fetchCropCycles();
   }, []);
 
-  return cropcyles;
+  return cropCycles;
 }
 
-function cropcyle() {
-  const cropcyles = usecropcyles();
+function CropCycle() {
+  const [statusFilter, setStatusFilter] = useState('All');
+  const cropCycles = useCropCycles();
+
+  const handleFilterChange = (event) => {
+    setStatusFilter(event.target.value);
+  };
+
+  const filteredCropCycles = statusFilter === 'All'
+    ? cropCycles
+    : cropCycles.filter(cycle => cycle.status.toLowerCase() === statusFilter.toLowerCase());
 
   return (
-  
- 
-      <>
-      <div className='dropactive'>
-        <DropDownactive/>
+    <>
+      <div className="dropactive">
+        <DropDownactive onChange={handleFilterChange} />
       </div>
       <table>
         <thead>
@@ -39,29 +46,27 @@ function cropcyle() {
             <th>Farmland ID</th>
             <th>Crop ID</th>
             <th>Date</th>
-            <th>Close date</th>
-            <th>status</th>
+            <th>Close Date</th>
+            <th>Status</th>
             <th>Active</th>
           </tr>
         </thead>
         <tbody>
-          {cropcyles.map((cropcyles, index) => (
-            <tr key={cropcyles.id}>
+          {filteredCropCycles.map((cycle, index) => (
+            <tr key={cycle.id}>
               <td>{index + 1}</td>
-              <td>{cropcyles.farm_land_id}</td>
-              <td>{cropcyles.crop_id}</td>
-              <td>{cropcyles.open_date}</td>
-              <td>{cropcyles.close_date}</td>
-              <td>{cropcyles.status}</td>
+              <td>{cycle.farm_land_id}</td>
+              <td>{cycle.crop_id}</td>
+              <td>{cycle.open_date}</td>
+              <td>{cycle.close_date}</td>
+              <td>{cycle.status}</td>
               <td>Edit</td>
             </tr>
           ))}
         </tbody>
       </table>
-
     </>
-
   );
 }
 
-export default cropcyle;
+export default CropCycle;

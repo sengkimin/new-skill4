@@ -23,18 +23,26 @@ function useFarmlands() {
 }
 
 function Farmland() {
+  const [statusFilter, setStatusFilter] = useState('All');
   const farmlands = useFarmlands();
 
+  const handleFilterChange = (event) => {
+    setStatusFilter(event.target.value);
+  };
+
+  const filteredFarmlands = statusFilter === 'All'
+    ? farmlands
+    : farmlands.filter(farmland => farmland.status.toLowerCase() === statusFilter.toLowerCase());
+
   return (
-<>
-   <div className="dropactive">
- <DropDownactive/>
-   </div>
- 
+    <>
+      <div className="dropactive">
+        <DropDownactive onChange={handleFilterChange} />
+      </div>
+
       <table>
         <thead>
           <tr>
-            {/* <th>No</th> */}
             <th>ID</th>
             <th>Size</th>
             <th>Latitude</th>
@@ -45,22 +53,20 @@ function Farmland() {
           </tr>
         </thead>
         <tbody>
-          {farmlands.map((farmland, index) => (
+          {filteredFarmlands.map((farmland, index) => (
             <tr key={farmland.id}>
-              {/* <td>{index + 1}</td> */}
               <td>{farmland.id}</td>
               <td>{farmland.size}</td>
               <td>{farmland.latitude}</td>
               <td>{farmland.longitude}</td>
-              <td>{farmland.farmer_id}</td> 
+              <td>{farmland.farmer_id}</td>
               <td>{farmland.status}</td>
               <td>Edit</td>
             </tr>
           ))}
         </tbody>
       </table>
-      </>
-
+    </>
   );
 }
 
