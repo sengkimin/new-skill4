@@ -1,82 +1,64 @@
 
 import React, { useState, useEffect } from 'react';
-import {
-  getTotalFarmers,
-  getTotalFarmlands,
-  getTotalCropCycle,
-  getTotalFarmlandSize,
-} from '../api/summary';
-import '../styles/Dashboard.css'
-
-const Dashboard = () => {
-  const [totalFarmers, setTotalFarmers] = useState(0);
-  const [totalFarmlands, setTotalFarmelands] = useState(0);
-  const [activeCropcycles, setActiveCropcycles] = useState(0);
-  const [totalFarmlandSize, setTotalFarmelandSize] = useState(0);
-  
-
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const farmersData = await getTotalFarmers();
-        const farmlandsData = await getTotalFarmlands();
-        const cropcyclesData = await getTotalCropCycle();
-        const farmlandSizeData = await getTotalFarmlandSize();
+import './../styles/Dashboard.css';
 
 
 
-
-
-
-        setTotalFarmers(farmersData.totalFarmers);
-        setTotalFarmelands(farmlandsData.totalFarmlands);
-        setActiveCropcycles(cropcyclesData.activeCropCycles);
-        setTotalFarmelandSize(farmlandSizeData.totalFarmlandSize);
-      } catch (error) {
-        console.error('Error fetching data:', error);
+function Farmers() {
+  const [farmers, setFarmers] = useState([]);
+  useEffect(()=>{
+    const fetchFarmers=async()=>{
+      try{
+      const response = await fetch('https://agro-admin-dashboard-api.vercel.app/api/crops');
+      const data = await response.json();
+      setFarmers(data);
+      return response.data
+    }catch(error){
+      console.log(error);
+    }
+      
       }
-    };
-
-    fetchData();
-  }, []);
+      fetchFarmers();
+      },[])
 
   return (
     
-    
     <>
-
-      <div className="dashboard-container">
-      
-        <h2>Overview</h2>
-
-        <div className="dashboard-stats">
-          <main>
-          <div className="dashboard-stat">
-            <h3>Total Farmers</h3>
-            <p>{totalFarmers}</p>
-          </div>
-          <div className="dashboard-stat">
-            <h3>Total Farmlands</h3>
-            <p>{totalFarmlands}</p>
-          </div>
-     
-          </main>
-          <span>
-          <div className="dashboard-stat">
-            <h3>Total active Crop cycles</h3>
-            <p>{activeCropcycles}</p>
-          </div>
-          <div className="dashboard-stat">
-            <h3>Total size of farmland</h3>
-            <p>{totalFarmlandSize}</p>
-          </div>
-          </span>
-       
-        </div>
-      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>CropType_Name</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          {farmers.map((farmer, index) => (
+            <tr key={farmer.id}>
+              <td>{index + 1}</td>
+              <td>{farmer.id}</td>
+              <td>{farmer.name}</td>
+              <td>{farmer.crop_type.name}</td>
+           
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </>
   );
-};
+  };
 
-export default Dashboard;
+
+
+export default Farmers;
+
+
+
+
+
+
+
+
+
